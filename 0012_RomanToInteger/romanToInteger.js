@@ -35,12 +35,12 @@ var romanToInt = function (s) {
   for (let i = 0; i < s.length; i++) {
     let num1 = romans[s[i]]
     let num2 = romans[s[i + 1]]
-    // 3. 如果前面的字比後面大，就儲存至 result
+    // 4. 如果前面的字比後面小，就相減、儲存至 result，並跳過後面的數字
     if (num1 < num2) {
       result += (num2 - num1)
       i++
     } else {
-      // 4. 如果前面的字比後面小，就相減並儲存至 result
+      // 3. 如果前面的字比後面大，就儲存至 result
       result += num1
     }
   }
