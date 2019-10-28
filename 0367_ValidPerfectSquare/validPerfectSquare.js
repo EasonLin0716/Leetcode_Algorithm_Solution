@@ -39,7 +39,7 @@ var isPerfectSquare = function (num) {
       left = mid + 1
     }
   }
-  // 3. 如果 r < l 表示不存在，回傳 false
+  // 3. 如果 r < l 表示已經跑過了所有可能均不存在，回傳 false
   return false
 };
 
