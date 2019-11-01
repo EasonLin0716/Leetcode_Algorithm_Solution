@@ -1,5 +1,5 @@
 # leetcode-algorithm-solution
-Some solutions of leetcode algorithm.
+leetcode演算法解題的程式碼及中文註解
 
 ## Note
-Solutions are written in comment in every js files.
+註解都寫在.js檔案中
