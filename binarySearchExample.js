@@ -10,7 +10,7 @@
 function search(arr, target) {
   let [low, high] = [0, arr.length - 1]
   while (low <= high) {
-    const mid = Math.floor((low + high) / 2)
+    const mid = Math.ceil((low + high) / 2)
     if (arr[mid] > target) return (high = mid - 1)
     if (arr[mid] < target) return (low = mid + 1)
     break
@@ -19,3 +19,4 @@ function search(arr, target) {
 }
 
 console.log(search([5, 17, 33, 41, 55, 61, 80], 55)) // 4
+console.log(search([5, 17, 33, 41, 45, 55, 61, 80], 55))
