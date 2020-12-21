@@ -32,14 +32,32 @@ solution:
  * 這題本來是用兩層暴力解，後來發現網路上有人用 map 去解，就吸收起來，因為 map 中的鍵都是已經算過的數字，如果有找到該鍵表示相加等於目標，就能拿到其索引並回傳
  */
 
+// var twoSum = function (nums, target) {
+//   const map = {};
+//   for (let i = 0; i < nums.length; i++) {
+//     const v = nums[i];
+//     if (map[target - v] >= 0) {
+//       return [map[target - v], i];
+//     } else {
+//       map[v] = i;
+//     }
+//   }
+// };
+
+// using es6 Map
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
 var twoSum = function (nums, target) {
-  const map = {};
+  const map = new Map();
   for (let i = 0; i < nums.length; i++) {
     const v = nums[i];
-    if (map[target - v] >= 0) {
-      return [map[target - v], i];
+    if (map.get(target - v) >= 0) {
+      return [map.get(target - v), i];
     } else {
-      map[v] = i;
+      map.set(v, i);
     }
   }
 };
