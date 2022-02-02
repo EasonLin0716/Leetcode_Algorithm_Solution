@@ -1,13 +1,26 @@
 var findMaximumXOR = function (nums) {
-  let set = [...new Set(nums)];
-  if (set.length === 1) return 0;
-  let max = set[0] ^ set[1];
-  for (let i = 0; i < set.length; i++) {
-    for (let j = i + 1; j < set.length; j++) {
-      max = Math.max(set[i] ^ set[j], max);
+  let maxResult = 0;
+  let mask = 0;
+  // 2的31次方
+  for (let i = 31; i >= 0; i--) {
+    // 10000, 01000, 00100 ...
+    mask = mask | (1 << i);
+    const set = new Set();
+    for (let num of nums) {
+      // 只關注當下遍歷到的二進位位置
+      set.add(num & mask);
+    }
+    // 10000, 11000, 11100 ... tmp 會一直疊加 (如果有符合的話)
+    const tmp = maxResult | (1 << i);
+    for (let prefix of set.keys()) {
+      // tmp ^ prefix 為最大值，嘗試找出
+      if (set.has(tmp ^ prefix)) {
+        maxResult = tmp;
+        break;
+      }
     }
   }
-  return max;
+  return maxResult;
 };
 
-console.log(findMaximumXOR([3, 10, 5, 25, 2, 8]));
+findMaximumXOR([3, 10, 5, 25, 2, 8]);
