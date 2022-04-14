@@ -15,12 +15,12 @@ var twoCitySchedCost = function (costs) {
   var sum = 0;
   while (left < right) {
     // 去抓出 costs 索引
-    var firstIndex = minusAndIndex[left][1];
-    var lastIndex = minusAndIndex[right][1];
+    var leftIndex = minusAndIndex[left][1];
+    var rightIndex = minusAndIndex[right][1];
     // 左邊選A
-    sum += costs[firstIndex][0];
+    sum += costs[leftIndex][0];
     // 右邊選B
-    sum += costs[lastIndex][1];
+    sum += costs[rightIndex][1];
     left++;
     right--;
   }
